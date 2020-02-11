@@ -1,0 +1,50 @@
+-Clinica
+ @IdClinica
+ Endereco
+ HorarioFuncionamento
+ CNPJ
+ NomeFantasia
+ RazaoSocial
+
+-TipoUsuario
+ @IdTipoUsuario INT
+ NomeTipoUsuario
+
+-Usuario
+ @IdUsuario
+ Nome
+ Email
+ Senha
+ *IdTipoUsuario
+
+ 
+-Prontuario
+ @IdProntuario
+ Data_Nascimento
+ Telefone
+ RG
+ CPF
+ Endereco
+ *IdUsuario
+
+
+-Medico
+ @IdMedico
+ CRM
+ Especialidade
+ *IdUsuario
+
+ 
+
+-Especialidade
+ @IdEspecialidades
+ Nome
+ 
+
+-Consulta
+ @IdConsulta
+ Data_Consulta
+ Situacao
+ *Idpaciente
+ *IdMedico
+ *IdClinica

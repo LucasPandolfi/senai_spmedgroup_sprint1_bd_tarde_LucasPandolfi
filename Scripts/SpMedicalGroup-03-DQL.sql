@@ -22,14 +22,29 @@ SELECT Medico.NomeMedico, Clinica.RazaoSocial, Clinica.Endereco
 FROM Medico
 INNER JOIN Clinica ON Clinica.IdClinica = Medico.IdClinica
 
---CRIANDO UMA FUNÇÃO PARA RETORNAR OS FUNCIONARIOS DE UMA MESMA ESPECIALIDADE
-CREATE FUNCTION EspecialidadesIguais (@Especialidade INT)
-RETURNS VARCHAR
+--CALCULANDO A IDADE DO PACIENTE
+SELECT Prontuario.NomePaciente, Prontuario.CPF, DATEDIFF(YEAR,Prontuario.Data_Nascimento, GETDATE()) AS Idade FROM Prontuario
+
+SELECT Prontuario.NomePaciente, CONVERT(VARCHAR, Prontuario.Data_Nascimento, 101) AS DataDeNascimento FROM Prontuario
+
+--CRIANDO A FUNCAO PARA IDENTIFICAR OS MEDICOS COM AS ESPECIALIDADES IGUAIS
+GO
+CREATE FUNCTION MedicoEspecialidade (@EspecialidadeIguais INT)
+RETURNS TABLE 
 AS
-BEGIN
-DECLARE @Especiladade INT
-SELECT @Especialidade = Especialidade.IdEspecialidade
+RETURN SELECT Medico.NomeMedico, Especialidade.Nome 
 FROM Medico
-WHERE Medico.IdEspecialidade = 17
-RETURN @Especialidade
-END
+INNER JOIN Especialidade ON Especialidade.IdEspecialidade = Medico.IdEspecialidade
+WHERE Medico.IdEspecialidade = @EspecialidadeIguais
+GO
+SELECT * FROM MedicoEspecialidade(17)
+
+--BUSCANDO A IDADE DO USUARIO POR UMA PROCEDURE
+GO
+CREATE PROCEDURE BuscarIdade
+AS
+SELECT Prontuario.NomePaciente, DATEDIFF(YEAR, Prontuario.Data_Nascimento, GetDate()) 
+as Idade, Prontuario.Cpf, Prontuario.RG, Prontuario.Telefone FROM Prontuario
+INNER JOIN Usuario ON Usuario.IdUsuario = Prontuario.IdUsuario
+GO
+BuscarIdade 

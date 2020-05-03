@@ -24,7 +24,7 @@ CREATE TABLE TipoUsuario (
 
 CREATE TABLE Usuario (
 	IdUsuario INT PRIMARY KEY IDENTITY,
-	EmailUsuario VARCHAR (255) NOT NULL,
+	Email VARCHAR (255) NOT NULL,
 	Senha VARCHAR (255) NOT NULL,
 	IdTipoUsuario INT FOREIGN KEY REFERENCES TipoUsuario (IdTipoUsuario)
 );
@@ -57,6 +57,7 @@ CREATE TABLE Situacao (
 CREATE TABLE Consulta (
 	IdConsulta INT PRIMARY KEY IDENTITY,
 	Data_Consulta VARCHAR (255) NOT NULL,
+	Descricao_Consulta VARCHAR (700),
 	IdSituacao INT FOREIGN KEY REFERENCES Situacao (IdSituacao),
 	IdClinica INT FOREIGN KEY REFERENCES Clinica (IdClinica),
 	IdMedico INT FOREIGN KEY REFERENCES Medico (IdMedico),

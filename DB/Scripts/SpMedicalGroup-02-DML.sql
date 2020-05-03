@@ -19,7 +19,7 @@ VALUES ('Administrador'), ('Médico'), ('Paciente');
 
 SELECT * FROM TipoUsuario;
 
-INSERT INTO Usuario (EmailUsuario, Senha, IdTipoUsuario)
+INSERT INTO Usuario (Email, Senha, IdTipoUsuario)
 VALUES  ('ricardo.lemos@spmedicalgroup.com.br', 'Ric123', 2), ('roberto.possarle@spmedicalgroup.com.br', 'Poss123', 2), 
 ('helena.souza@spmedicalgroup.com.br', 'Hel123', 2), ('Ligia@gmail.com', 'ligia123', 3), ('Alexandre@gmail.com', 'Alex123', 3),
 ('Fernando@gmail.com', 'Fer123', 3), ('Henrique@gmail.com', 'Henr123', 3), ('Joao@gmail.com', 'Joao123', 3), ('Bruno@gmail.com', 'Bru123', 3),
@@ -47,9 +47,9 @@ SELECT * FROM Prontuario
 INSERT INTO Situacao (Estatus)
 VALUES ('Realizada'), ('Agendada'), ('Cancelada');
 
-INSERT INTO Consulta (Data_Consulta, IdSituacao ,IdClinica, IdMedico, IdProntuario)
-VALUES ('20/01/20 15:00', 1, 1, 3, 7), ('06/01/20 10:00', 3, 1, 2, 2), ('07/02/2020 11:00', 1, 1, 2, 3), ('06/02/2018 10:00', 1, 1, 2, 2),
-('07/02/2019 11:00', 3, 1, 1, 4), ('08/03/2020 15:00', 2, 1, 3, 7), ('09/03/2020 11:00', 2, 1, 1, 4);
+INSERT INTO Consulta (Data_Consulta, Descricao_Consulta ,IdSituacao ,IdClinica, IdMedico, IdProntuario)
+VALUES ('20/01/20 15:00', 'teste1', 1, 1, 3, 7), ('06/01/20 10:00', 'teste2', 3, 1, 2, 2), ('07/02/2020 11:00', 'teste3', 1, 1, 2, 3), ('06/02/2018 10:00', 'teste4', 1, 1, 2, 2),
+('07/02/2019 11:00', 'teste5', 3, 1, 1, 4), ('08/03/2020 15:00', 'teste6', 2, 1, 3, 7), ('09/03/2020 11:00', 'teste7', 2, 1, 1, 4);
 
 SELECT * FROM Consulta
 
